@@ -26,4 +26,34 @@ class Ingredient:
         return False
 
 
+class Recipe:
+    def __init__(self, title):
+        self.title = title
+        self.ingredients = []
+
+    def add_ingredient(self, ingredient):
+        for i in self.ingredients:
+            if i == ingredient:
+                i.quantity += ingredient.quantity
+                return
+        return self.ingredients.append(ingredient)
+
+    @staticmethod
+    def is_valid_ratio(ratio):
+        return isinstance(ratio, (int, float)) and ratio > 0
+
+    def scale(self, ratio: float):
+        if not Recipe.is_valid_ratio(ratio):
+            raise ValueError('Ratio not valid')
+        nrecipe = Recipe(self.title)
+        for y in self.ingredients:
+            newy = Ingredient(y.name, y.quantity * ratio, y.unit)
+            nrecipe.add_ingredient(newy)
+        return nrecipe
+
+
+
+
+
+
 
