@@ -51,6 +51,17 @@ class Recipe:
             nrecipe.add_ingredient(newy)
         return nrecipe
 
+    def len(self):
+        return len(self.ingredients)
+
+    def __str__(self):
+        str_ingredients = [str(item) for item in self.ingredients]
+        return self.title + ':\n' + '\n'.join(str_ingredients)
+
+
+# class ShoppingList:
+
+
 
 
 
